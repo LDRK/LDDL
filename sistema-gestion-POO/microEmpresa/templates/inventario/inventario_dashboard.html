@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="flex flex-col h-full space-y-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Card: Productos Registrados -->
+    <div class="p-6 bg-white rounded-xl shadow dark:bg-gray-800">
+      <h5 class="text-lg font-bold text-gray-900 dark:text-white">Productos</h5>
+      <p class="mt-2 text-3xl font-semibold text-blue-600">{{total_productos}}</p>
+    </div>
+  
+    <!-- Card: Stock Total -->
+    <div class="p-6 bg-white rounded-xl shadow dark:bg-gray-800">
+      <h5 class="text-lg font-bold text-gray-900 dark:text-white">Stock Total</h5>
+      <p class="mt-2 text-3xl font-semibold text-green-600">{{total_stock}}</p>
+    </div>
+  
+    <!-- Card: Alertas de Stock Bajo -->
+    <div class="p-6 bg-white rounded-xl shadow dark:bg-gray-800">
+      <h5 class="text-lg font-bold text-gray-900 dark:text-white">Alertas</h5>
+      <p class="mt-2 text-3xl font-semibold text-red-600">8</p>
+    </div>
+  </div>
+  
+  <!-- Gráfica de Stock por Producto -->
+  <div class="flex-1 bg-white rounded-xl shadow dark:bg-gray-800">
+    <div class="p-4">
+      <h5 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Stock por Producto</h5>
+      <div class="relative ">
+        <canvas id="stockChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ctx = document.getElementById('stockChart').getContext('2d');
+  const stockChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Producto A', 'Producto B', 'Producto C', 'Producto D'],
+      datasets: [{
+        label: 'Cantidad en Stock',
+        data: [120, 90, 50, 180],
+        backgroundColor: [
+          '#3b82f6',
+          '#10b981',
+          '#f59e0b',
+          '#ef4444'
+        ],
+        borderRadius: 10,
+        barThickness: 30
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}
+
+{% block custom_scripts %}
+    <script src="{% static 'js/inventario/register_product.js' %}"></script>
+    <script src="{% static 'js/inventario/register_category.js' %}"></script>
+    <script src="{% static 'js/inventario/inventario.js' %}"></script>
+    <script src="{% static 'js/inventario/busqueda.js' %}"></script>
+{% endblock %}

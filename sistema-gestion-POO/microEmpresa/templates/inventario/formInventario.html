@@ -1,0 +1,41 @@
+<div class="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form method="POST" id="formInventario" action="{% if stock %}{% url 'editarInventario' stock.id %}{% else %}{% url 'registerInventario' %}{% endif %}">
+            {% csrf_token %}
+            <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{% if stock %}Editar{% else %}Registrar {% endif %} Stock</h5>
+        
+            <div>
+                <label for="producto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Producto</label>
+                {% if stock %}
+                <input type="text" name="producto" id="producto"
+                        value="{{stock.producto.nombre}}"
+                        disabled
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                         />
+                         <input type="hidden" name="producto" value="{{ stock.producto.id }}">
+                {% else %}
+                <select id="producto" name="producto" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                    <option disabled selected>Seleccione un producto</option>
+                    {% for producto in productos %}
+                    <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+                    {% endfor %}
+                </select>
+                {% endif %}
+            </div>
+        
+            <div>
+                <label for="cantidad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad" min="0" required
+                    value="{{ form.cantidad.value|default:''}}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                    placeholder="Ej. 10">
+            </div>
+        
+            <button type="submit"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mt-4">
+                {% if stock %}Actualizar{% else %}Registrar {% endif %} Inventario
+            </button>
+        </form>
+    </div>
+</div>

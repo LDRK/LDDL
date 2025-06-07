@@ -1,0 +1,24 @@
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <div class="flex flex-col h-full space-y-4">
+                <h2 class="text-2xl font-bold mb-4 dark:text-white">Facturas registradas</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {% for venta in facturas %}
+                    <div class="bg-white shadow-md rounded-lg p-4 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="space-y-2">
+                            <p class="font-semibold text-lg text-gray-900 dark:text-white">Factura ID-{{ venta.id }}</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Cliente: {{ venta.cliente.nombre }} {{ venta.cliente.apellido }}</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Vendedor: {{ venta.usuario }}</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Fecha: {{ venta.fecha|date:"d/m/Y H:i" }}</p>
+                            <button class="ver-factura bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg w-full mt-4 transition duration-200" data-id="{{ venta.id }}">
+                                Ver Detalle
+                            </button>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-gray-500 dark:text-gray-400">No hay facturas registradas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>

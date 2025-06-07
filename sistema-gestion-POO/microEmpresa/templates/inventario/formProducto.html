@@ -1,0 +1,57 @@
+<div class="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form  class="space-y-6" method="POST" enctype="multipart/form-data" id="formProducto" action="{% if producto %}{% url 'editarProducto' producto.id %}{% else %}{% url 'registerProductos' %}{% endif %}">
+            {% csrf_token %}
+            <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">{% if producto %}Editar{% else %}Registrar {% endif %} Producto</h5>
+
+            <div>
+                <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del Producto</label>
+                <input type="text" name="nombre" id="nombre"
+                    value="{{form.nombre.value|default:''}}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="Ej. Laptop HP 15" required />
+            </div>
+
+            <div>
+                <label for="categoria" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione una categoría</label>
+                <select id="categoria" name="categoria"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    
+                    <option disabled {% if not producto.categoria %}selected{% endif %}>Seleccione una categoría</option>
+                    
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}" {% if categoria.id == producto.categoria.id %}selected{% endif %}>
+                            {{ categoria.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            
+
+            <div>
+                <label for="precio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+                <input type="number" name="precio" id="precio" step="0.01"
+                    value="{{form.precio.value|default:''}}"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="Ej. 45000.00" required />
+            </div>
+
+            <!-- <div>
+                <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen del Producto</label>
+                <input type="file" name="imagen" id="imagen"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+            </div> -->
+
+            <div>
+                <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+                <textarea name="descripcion" id="descripcion"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="Descripción detallada del producto..." required>{{form.descripcion.value|default:''}}</textarea>
+            </div>
+
+            <button type="submit"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{% if producto %}Actualizar{% else %}Registrar{% endif %}</button>
+        </form>
+    </div>
+</div>

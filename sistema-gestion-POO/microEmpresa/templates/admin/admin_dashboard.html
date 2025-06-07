@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    {% include 'components/dashboard/content_dashboard.html' %}
+{% endblock %}
+
+{% block custom_scripts %}
+  
+    <script src="{% static 'js/admin/script.js' %}"></script>
+    <!-- <script src="{% static 'js/admin/script_show_users.js' %}"></script> -->
+{% endblock %}
