@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Reportes {% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row g-0 ">
+        <div class="card">
+            <!-- <div class="card-header">
+       
+            </div> -->
+            <div class="card-body d-flex  m-auto gap-4">
+                <a class="flip-card" href="{% url 'generar_pdf' %}?tipo=empleados" target="_blank">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title">Reporte Empleados</p>
+                            <img src="{% static 'img/report.png' %}" >
+                        </div>
+                        <div class="flip-card-back">
+                            <p >Podras generar en PDF la lista de empleados que esta registrados</p>
+                            
+                        </div>
+                    </div>
+                </a>
+
+                <a class="flip-card" href="{% url 'generar_pdf' %}?tipo=usuarios" target="_blank" >
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title">Reporte Usuarios</p>
+                            <img src="{% static 'img/report.png' %}" >
+                        </div>
+                        <div class="flip-card-back">
+                            <p >Podras generar en PDF la lista de Usuarios que esta registrados</p>
+                            
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock%}
+

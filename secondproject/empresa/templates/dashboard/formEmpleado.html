@@ -1,0 +1,38 @@
+<form enctype="multipart/form-data" method="post" id="formEmpleado" action="{% if empleado %}{% url 'editarEmpleado' empleado.id %}{% else %}{% url 'registroEmpleados' %}{% endif %}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div>
+                    <h1>{% if empleado %}Editar{% else %}Registrar{% endif %} Empleado</h1>
+                </div>
+                <label class="form-label" for="">Foto</label>
+                <input class="form-control" type="file" id="foto" name="foto" accept="image/*">
+                <label for="">Nombre</label>
+                <input class="form-control" type="text" id="nombre" name="nombre" value="{{ empleado.nombre }}">
+                <label for="">Apellido Paterno</label>
+                <input class="form-control" type="text" id="apellidoPatern" name="apellidoPatern" value="{{ empleado.apellidoPatern}}">
+                <label for="">Apellido Materno</label>
+                <input class="form-control" type="text" id="apellidoMatern" name="apellidoMatern" value="{{ empleado.apellidoMatern}}">
+                <label for="">Correo</label>
+                <input class="form-control" type="email" id="correo" name="correo" value="{{ empleado.correo}}">
+                <label for="">Departamento</label>
+                <input class="form-control" type="text" id="departamento" name="departamento" value="{{ empleado.departamento}}">
+                <div>
+                    <button class="btn btn-success my-4" type="submit">{% if empleado %}Actualizar{% else %}Registrar{% endif %}</button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#modalExcel" id="btnModalExcel" name="btnModalExcel">Cargar Excel</button>
+                    <a class="btn btn-primary" href="{% url 'dashboard' %}">Regresar</a>
+                    
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal para cargar el excel de empleados -->
+
+{% include 'components/modalExcel.html' %}

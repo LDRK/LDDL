@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+              <!-- Logo o título de la barra -->
+              <a class="navbar-brand" href="#">Mi Logo</a>
+          
+              <!-- Botón hamburguesa para pantallas pequeñas -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <!-- Contenido colapsable de la barra -->
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Enlaces de navegación centrados -->
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Características</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Precios</a>
+                  </li>
+                </ul>
+          
+                <!-- Botones alineados a la derecha -->
+                <div class="d-flex ms-auto">
+                  <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Iniciar sesión</a>
+                  <a class="btn btn-primary" href="{% url 'register' %}">Registrarse</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>          
+          
+</body>
+</html>

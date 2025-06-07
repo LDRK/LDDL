@@ -1,0 +1,30 @@
+<form enctype="multipart/form-data" method="post" id="formUsuario" action="{% if usuario %}{% url 'editarUsuario' usuario.id %}{% else %}{% url 'registroUsuarios' %}{% endif %}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div>
+                    <h1>{% if usuario %}Editar{% else %}Registrar{% endif %} Usuario</h1>
+                </div>
+                <label for="">Usuario</label>
+                <input class="form-control" type="text" id="username" name="username" value="{{ usuario.username}}" required>
+                <label for="">Correo</label>
+                <input class="form-control" type="email" id="email" name="email" value="{{ usuario.email}}" required>
+                <label for="">Contraseña</label>
+                <input class="form-control" type="password" id="password1" name="password1" value="{{ usuario.password1}}" required>
+                <label for="">Confirmar Contraseña</label>
+                <input class="form-control" type="password" id="password2" name="password2"value="{{ usuario.password2}}"  required>
+                
+                <div>
+                    <button class="btn btn-success my-4" type="submit">{% if usuario %}Actualizar{% else %}Registrar{% endif %}</button>
+                    <a class="btn btn-primary" href="{% url 'usuarios' %}">Regresar</a>
+                    
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</form>
+

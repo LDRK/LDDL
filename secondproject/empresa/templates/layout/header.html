@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <ul class="nav navbar-nav ms-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Registrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usuarios' %}">Usuarios</a>
+                </li>
+                <li class="nav-item dropdown me-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Mas
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end ">
+                        <li><a class="dropdown-item" href="{% url 'reportes' %}">Reporte</a></li>
+                        <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                        <li><a class="dropdown-item" href="#">Ayuda</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+    </header>
+</body>
+</html>

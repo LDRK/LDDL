@@ -1,0 +1,28 @@
+<table class="table table-bordered table-hover table-responsive-md">
+    <!-- Agregar esto al inicio de la tabla -->
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USUARIO</th>
+            <th scope="col">CORREO</th>
+            <th scope="col">ÚLTIMO LOGIN</th>
+            <th scope="col">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{% if usuario.last_login %}{{ usuario.last_login|date:"d/m/Y H:i" }}{% else %}Nunca{% endif %}</td>
+                <td>
+                    <div class="d-flex">
+                        <a class="btn btn-warning btn-sm mx-2 btn-editar" href="{% url 'editarUsuario' usuario.id %}" data-id="{{ usuario.id }}" id="btn-editar">Modificar</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'eliminarUser' usuario.id %}">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

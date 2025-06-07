@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row g-0">
+        <div class="col-md-4 my-4">
+            <button class="btn btn-success" type="button" id="btnForm" >Registrar Empleado</button>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="card">
+            <!-- <div class="card-header">
+              Formulario de Registro
+            </div> -->
+            <div class="card-body">
+
+                 <!-- Contenedor dinámico -->
+                <div id="content-area" class="mt-4">
+                 <!-- Aquí se cargarán dinámicamente el formulario o la tabla -->
+                </div>
+
+             
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block custom_scripts %}
+    <script src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}

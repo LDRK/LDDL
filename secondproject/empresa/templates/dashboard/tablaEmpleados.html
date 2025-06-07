@@ -1,0 +1,61 @@
+<table class="table table-bordered table-hover table-responsive-md">
+    <thead>
+        <tr>
+            <th scope="col">FOTO</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO PATERNO</th>
+            <th scope="col">APELLIDO MATERNO</th>
+            <th scope="col">CORREO</th>
+            <th scope="col">DEPARTAMENTO</th>
+            <th scope="col">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>
+                <img src="{{ empleado.foto.url }}" alt="Foto de {{ empleado.nombre }}" class="img-thumbnail" style="width: 50px; height: 50px;" />
+            </td>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.apellidoPatern }}</td>
+            <td>{{ empleado.apellidoMatern }}</td>
+            <td>{{ empleado.correo }}</td>
+            <td>{{ empleado.departamento }}</td>
+            <td>
+                <div class = 'd-flex'>
+                    
+                        <a type='submit' class='btn btn-warning btn-sm mx-2 btn-editar' href="{% url 'editarEmpleado' empleado.id %}" data-id="{{ empleado.id }}" id="btn-editar" >Modificar</a>
+                
+                    
+                       <a type='submit' class='btn btn-danger btn-sm' href="{% url 'eliminar' empleado.id %}">Eliminar</a>
+                
+                    </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<!-- Paginación -->
+<!-- {% if is_paginated %}
+<nav>
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">« Primero</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último »</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %} -->
