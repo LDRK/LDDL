@@ -1,0 +1,63 @@
+:root {
+  --colorPrimary: #00a5b5; /*Fondo principal*/
+  --colorSecondary: #71c5e8; /*Secciones*/
+  --colorTertiary: #e03e52; /*Componentes*/
+  --colorQuaternary: #b30838; /*Botones*/
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--colorPrimary);
+}
+
+/*Estilos del formulario Registro*/
+
+.form-registro {
+  background-color: var(--colorSecondary);
+}
+
+.p-regitrar {
+  color: black;
+}
+.a-regitrar {
+  color: var(--colorQuaternary);
+}
+.a-regitrar:hover {
+  color: #e03e52;
+}
+
+.btn-registro {
+  background-color: var(--colorQuaternary);
+}
+.btn-registro:hover {
+  background-color: var(--colorTertiary);
+}
+/* Fin Estilos del formulario Registro*/
+
+/*Estilos del formulario login*/
+.form-login {
+  background-color: var(--colorSecondary);
+}
+.p-login {
+  color: black;
+}
+.a-login {
+  color: var(--colorQuaternary);
+}
+.a-login:hover {
+  color: #e03e52;
+}
+
+.btn-login {
+  background-color: var(--colorQuaternary);
+}
+.btn-lohin:hover {
+  background-color: var(--colorTertiary);
+}
+/*Fin Estilos del formulario login*/
