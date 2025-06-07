@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+    <main class="w-full max-w-5xl">
+        <table class="w-full text-sm mt-6 text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Precio
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Categoria
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Imagen
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                    <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ producto.id }}</th>
+                    <td class="px-6 py-4">{{ producto.title }}</td>
+                    <td class="px-6 py-4">{{ producto.price }}</td>
+                    <td class="px-6 py-4">{{ producto.category }}</td>
+                    <td class="px-6 py-4">
+                        <img src="{{ producto.image }}" alt="{{ producto.title }}" class="w-12 h-12 object-cover rounded-full">
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
